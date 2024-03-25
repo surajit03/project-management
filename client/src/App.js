@@ -2,17 +2,24 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import './App.css';
+import { Toaster } from "react-hot-toast";
+
 import Home from './pages/Home.jsx';
 import JoinUs from './pages/JoinUs.jsx';
 import Navebar from './components/Navebar.jsx';
 import About from './pages/About.jsx';
 import Contact from './pages/Contact.jsx';
 import ANavebar from './components/ANavebar.jsx';
-import Menu from './components/Menu.jsx';
+// import Menu from './components/Menu.jsx';
 import Dashboard from './pages/Dashboard.jsx'
+import Time from './pages/Time.jsx'
 import Issue from './pages/Issue.jsx'
 import Calendar from './pages/Calendar.jsx'
 import Timeline from './pages/TimeLine.jsx'
+import AppLayout from './components/AppLayout.js'
+import Task from './components/Task.js'
+// import Sidebar from './components/Sidebar.js'
+
 
 
 const App = () => {
@@ -20,44 +27,65 @@ const App = () => {
   console.log(user);
   return (
 
-    // <Router>
-    //   {user === null &&
-    //     <Routes>
-    //       <Route path="/" element={<JoinUs />} />
-    //       <Route path="/Navebar" element={<Navebar />} />
-    //     </Routes>}
-    //   {user === "user" &&
-    //     <>
-    //       <Route path="/Navebar" element={<Navebar />} />
-    //     </>
-    //   }
-    // </Router>
 
-
-    <div className='App'>
+    <div className='App</div>'>
       {user ? (
+        // <Router>
+        //   <div className='navebar' style={{ borderBottom: '1px solid white' }}>
+        //     <ANavebar />
+        //   </div>
+        //   <div>
+        //     <AppLayout />
+        //     <div className="w-[220px]</div>">
+        //       <Toaster
+        //         position="top-right"
+        //         gutter={8}
+        //       />
+        //     </div>
+        //     <div className='rout' style={{ display: 'block', margin: '2px' }}>
+        //       <Routes>
+        //         <Route path="/" element={
+        //           <div className="flex flex-col items-center w-full pt-10">
+        //             <img src="./image/welcome.svg" className="w-5/12" alt="" />
+        //             <h1 className="text-lg text-gray-600">Select or create new project</h1>
+        //           </div>
+
+        //         } />
+
+        //         <Route path="/Dashboard" element={<Dashboard />} />
+        //         <Route path="/Time" element={<Time />} />
+        //         <Route path="/Issue" element={<Issue />} />
+        //         <Route path="/Calendar" element={<Calendar />} />
+        //         <Route path="/Timeline" element={<Timeline />} />
+        //         <Route path="/:projectId" element={<Task />} />
+        //         <Route path="/Contact" element={<Contact />} />
+
+        //       </Routes>
+        //     </div>
+        //   </div>
+        // </Router>
         <Router>
-          <div className='navebar' style={{borderBottom: '1px solid white' }}>
-            <ANavebar />
-          </div>
-          <div className='menu' style={{ display: 'flex' }}>
-            <div className='side-bar ' style={{width: '12%', borderRight: '2px solid red', borderLeft: 'none', borderTop: 'none', borderBottom: 'none'}}>
-              <Menu />
-            </div>
-            <div className='rout' style={{ display: 'block', margin: '2px' }}>
-              <Routes>
+        <AppLayout>
+          <Toaster
+            position="top-right"
+            gutter={8}
+          />
+          <Routes>
+            <Route path="/:projectId" element={<Task />} />
+            <Route path="/" element={
+              <div className="flex flex-col items-center w-full pt-10">
+                <img src="./image/welcome.svg" className="w-5/12" alt="" />
+                <h1 className="text-lg text-gray-600">Select or create new project</h1>
+              </div>
+            } />
+          <Route path="/Dashboard" element={<Dashboard />} />
+          <Route path="/Time" element={<Time />} />
+          </Routes>
+        </AppLayout>
+      </Router>
 
-                <Route path="/Dashboard" element={<Dashboard />} />
-                <Route path="/Issue" element={<Issue />} />
-                <Route path="/Calendar" element={<Calendar />} />
-                <Route path="/Timeline" element={<Timeline />} />
-
-
-              </Routes>
-            </div>
-          </div>
-        </Router>
       ) : (
+
         <div>
           <Router>
             <div className='Inavebar'>
@@ -72,6 +100,7 @@ const App = () => {
             </Routes>
           </Router>
         </div>
+
       )}
     </div>
   );

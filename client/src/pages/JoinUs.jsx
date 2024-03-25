@@ -22,7 +22,8 @@ function JoinUs() {
       const res = await axios.post("/auth/singIn", { email, password });
       dispatch(loginSuccess(res.data, userRole));
       console.log(res.data);
-      navigate("/Dashboard");
+      // navigate("/Dashboard");
+      navigate("/");
       console.log(currentRole);
     } catch (error) {
       dispatch(loginFailure());
@@ -37,7 +38,8 @@ function JoinUs() {
       const res = await axios.post("/auth/singUp", { name, email, password });
       dispatch(loginSuccess(res.data, userRole));
       console.log(res.data);
-      navigate("/Dashboard");
+      // navigate("/Dashboard");
+      navigate("/");
       console.log(currentRole);
     } catch (error) {
       dispatch(loginFailure());

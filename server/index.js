@@ -18,7 +18,7 @@ app.use(cookieParser());
 // Available router
 app.use('/api/auth',require('./routers/auth.js'))
 app.use('/api/room',require('./routers/room-rout.js'))
-app.use('/api/project',require('./routers/project-rout.js'))
+app.use('/api',require('./routers/project-rout.js'))
 
 
 

@@ -26,7 +26,7 @@ router.post('/singUp', [
         // find email in data base 
         let user = await User.findOne({ email: req.body.email });
         if (user) {
-            return res.status(400).json({ success, errors: "sorry a user with this email alredy exists" })
+            return res.status(400).json({  errors: "sorry a user with this email alredy exists" })
         }
 
         // used bcrypt encrept the password
